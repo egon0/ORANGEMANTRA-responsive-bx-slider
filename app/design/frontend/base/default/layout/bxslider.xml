@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <block type="bxslider/bxslider" name="bxslider_top" template="bxslider/bxslider.phtml" before="-" >
+            <action method="setPosition"><name>CONTENT_TOP</name></action>
+        </block>
+        <block type="bxslider/bxslider" name="bxslider_bottom" template="bxslider/bxslider.phtml" after="-" >
+            <action method="setPosition"><name>CONTENT_BOTTOM</name></action>
+        </block>
+        <block type="bxslider/bxslider" name="bxslider_right" template="bxslider/sidebar.phtml" after="-" >
+            <action method="setPosition"><name>SIDEBAR_RIGHT</name></action>
+        </block>
+        <block type="bxslider/bxslider" name="bxslider_left" template="bxslider/sidebar.phtml" after="-" >
+            <action method="setPosition"><name>SIDEBAR_LEFT</name></action>
+        </block>
+        <reference name="head">
+            <action method="addItem" ifconfig="bxslider/bxslider_group/jquery"><type>skin_js</type><script>js/jquery-1.10.2.min.js</script></action>
+            <action method="addCss"><stylesheet>css/jquery.bxslider.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><script>js/jquery.bxslider.js</script></action>
+        </reference>
+    </default>
+
+    <cms_page>
+        <reference name="content">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_top</block></action>
+            <action method="append" ifconfig="bxslider/bxslider_group/active"><block>bxslider_bottom</block></action>
+        </reference>
+        <reference name="left">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_left</block></action>
+        </reference>
+        <reference name="right">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_right</block></action>
+        </reference>
+    </cms_page>
+    <catalog_category_default>
+        <reference name="content">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_top</block></action>
+            <action method="append" ifconfig="bxslider/bxslider_group/active"><block>bxslider_bottom</block></action>
+        </reference>
+        <reference name="left">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_left</block></action>
+        </reference>
+        <reference name="right">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_right</block></action>
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered>
+        <reference name="content">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_top</block></action>
+            <action method="append" ifconfig="bxslider/bxslider_group/active"><block>bxslider_bottom</block></action>
+        </reference>
+        <reference name="left">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_left</block></action>
+        </reference>
+        <reference name="right">
+            <action method="insert" ifconfig="bxslider/bxslider_group/active"><block>bxslider_right</block></action>
+        </reference>
+    </catalog_category_layered>
+</layout>

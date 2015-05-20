@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <OM_BxSlider>
+            <version>0.1.0</version>
+        </OM_BxSlider>
+    </modules>
+
+    <frontend>
+        <routers>
+            <bxslider>
+                <use>standard</use>
+                <args>
+                    <module>OM_BxSlider</module>
+                    <frontName>bxslider</frontName>
+                </args>
+            </bxslider>
+        </routers>
+        <layout>
+            <updates>
+                <bxslider>
+                    <file>bxslider.xml</file>
+                </bxslider>
+            </updates>
+        </layout>
+    </frontend>
+
+    <admin>
+        <routers>
+            <bxslider>
+                <use>admin</use>
+                <args>
+                    <module>OM_BxSlider</module>
+                    <frontName>bxslider</frontName>
+                </args>
+            </bxslider>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <menu>
+            <bxslider module="bxslider">
+                <title>BX Slider</title>
+                <sort_order>71</sort_order>
+                <children>
+                    <manage_bxslider module="bxslider">
+                        <title>Manage Sliders</title>
+                        <sort_order>0</sort_order>
+                        <action>bxslider/adminhtml_bxslider</action>
+                    </manage_bxslider>
+                    <config module="bxslider">
+                        <title>Configuration</title>
+                        <sort_order>1</sort_order>
+                        <action>adminhtml/system_config/edit/section/bxslider</action>
+                    </config>
+                </children>
+            </bxslider>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <bxslider module="bxslider">
+                            <title>Banner Next</title>
+                            <sort_order>71</sort_order>
+                            <children>
+                                <manage_bxslider module="bxslider">
+                                    <title>Manage Sliders</title>
+                                    <sort_order>0</sort_order>
+                                    <action>bxslider/adminhtml_bxslider</action>
+                                </manage_bxslider>
+                                <config module="bxslider">
+                                    <title>Configuration</title>
+                                    <sort_order>1</sort_order>
+                                    <action>adminhtml/system_config/edit/section/bxslider</action>
+                                </config>
+                            </children>
+                        </bxslider>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <bxslider>
+                                            <title>BX Slider</title>
+                                        </bxslider>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+        <layout>
+            <updates>
+                <bxslider>
+                    <file>bxslider.xml</file>
+                </bxslider>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <global>
+        <helpers>
+            <bxslider>
+                <class>OM_BxSlider_Helper</class>
+            </bxslider>
+        </helpers>
+        <blocks>
+            <bxslider>
+                <class>OM_BxSlider_Block</class>
+            </bxslider>
+        </blocks>
+        <models>
+            <bxslider>
+                <class>OM_BxSlider_Model</class>
+                <resourceModel>bxslider_mysql4</resourceModel>
+            </bxslider>
+            <bxslider_mysql4>
+                <class>OM_BxSlider_Model_Mysql4</class>
+                <entities>
+                    <bxslider>
+                        <table>bxslider</table>
+                    </bxslider>
+                </entities>
+            </bxslider_mysql4>
+        </models>
+        <resources>
+            <bxslider_setup>
+                <setup>
+                    <module>OM_BxSlider</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </bxslider_setup>
+            <bxslider_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </bxslider_write>
+            <bxslider_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </bxslider_read>
+        </resources>
+    </global>
+
+    <default>
+        <bxslider>
+            <bxslider_group>
+                <active>1</active>
+                <mode>horizontal</mode>
+                <speed>500</speed>
+                <infiniteLoop>1</infiniteLoop>
+                <captions>0</captions>
+                <adaptiveHeight>0</adaptiveHeight>
+                <adaptiveHeightSpeed>500</adaptiveHeightSpeed>
+                <video>0</video>
+                <controls>1</controls>
+                <autoControls>0</autoControls>
+                <auto>1</auto>
+                <pause>4000</pause>
+                <autoStart>1</autoStart>
+            </bxslider_group>
+        </bxslider>
+    </default>
+</config>

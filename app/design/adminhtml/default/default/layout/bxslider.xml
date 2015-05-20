@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <bxslider_adminhtml_bxslider_index>
+        <update handle="editor_index_index"/>
+        <reference name="content">
+            <block type="bxslider/adminhtml_bxslider" name="bxSlider" />
+        </reference>
+    </bxslider_adminhtml_bxslider_index>
+</layout>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <bxslider translate="label" module="bxslider">
+            <label>BX Slider</label>
+            <sort_order>100</sort_order>
+        </bxslider>
+    </tabs>
+
+    <sections>
+        <bxslider translate="label" module="bxslider">
+            <label>Configuration Options</label>
+            <tab>bxslider</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+                <bxslider_group translate="label" module="bxslider">
+                    <label>BX Slider Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <active translate="label">
+                            <label>Enable BXSlider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+						<jquery translate="label">
+                            <label>Enable jquery 1.10.2</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jquery>
+                        <mode translate="label">
+                            <label>Mode</label>
+                            <comment>options: horizontal, vertical, fade</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mode>
+                        <speed translate="label">
+                            <label>Speed</label>
+                            <comment>Only integer value</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </speed>
+                        <infiniteLoop translate="label">
+                            <label>Infinite Loop</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </infiniteLoop>
+                        <captions translate="label">
+                            <label>Captions</label>
+                            <comment>Include image captions. Captions are derived from the image's title attribute</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </captions>
+                        <slideWidth translate="label">
+                            <label>Auto width</label>
+                            <comment>keep blank if you want auto width or use 500 if you want 500px width.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slideWidth>
+                        <adaptiveHeight translate="label">
+                            <label>Adaptive Height</label>
+                            <comment>Dynamically adjust slider height based on each slide's height</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </adaptiveHeight>
+                        <adaptiveHeightSpeed translate="label">
+                            <label>Adaptive Height Speed</label>
+                            <comment>Only integer value</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><adaptiveHeight>1</adaptiveHeight></depends>
+                        </adaptiveHeightSpeed>
+                        <video translate="label">
+                            <label>Video</label>
+                            <comment>If any slides contain video, set this to true</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </video>
+                        <controls translate="label">
+                            <label>Controls</label>
+                            <comment>If true, "Next" / "Prev" controls will be added</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </controls>
+                        <autoControls translate="label">
+                            <label>Auto Controls</label>
+                            <comment>If true, "Start" / "Stop" controls will be added</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </autoControls>
+                        <auto translate="label">
+                            <label>Auto Slides</label>
+                            <comment>Slides will automatically transition</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto>
+                        <pause translate="label">
+                            <label>Pause</label>
+                            <comment>The amount of time (in ms) between each auto transition</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pause>
+                        <autoStart translate="label">
+                            <label>Auto Slides</label>
+                            <comment>Auto show starts playing on load.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </autoStart>
+                    </fields>
+                </bxslider_group>
+            </groups>
+        </bxslider>
+    </sections>
+</config>

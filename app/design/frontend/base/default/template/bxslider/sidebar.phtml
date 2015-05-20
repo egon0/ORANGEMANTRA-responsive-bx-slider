@@ -1,0 +1,75 @@
+<?php
+/**
+ * @author: Pardeep Kumar <pardeep19@gmail.com>
+ * @since: 27-01-2015 16:45
+ * @copyright: All right reserved.
+ * created by IntelliJ IDEA
+ */
+?>
+
+<?php
+$MODE = Mage::getStoreConfig('bxslider/bxslider_group/mode',Mage::app()->getStore());
+$SPEED = Mage::getStoreConfig('bxslider/bxslider_group/speed',Mage::app()->getStore());
+$INFINITE_LOOP = (Mage::getStoreConfig('bxslider/bxslider_group/infiniteLoop',Mage::app()->getStore())) ? 'true' : 'false';
+$CAPTION = (Mage::getStoreConfig('bxslider/bxslider_group/captions',Mage::app()->getStore())) ? 'true' : 'false';
+$ADAPTIVE_HEIGHT = (Mage::getStoreConfig('bxslider/bxslider_group/adaptiveHeight',Mage::app()->getStore())) ? 'true' : 'false';
+$ADAPTIVE_HEIGHT_SPEED = Mage::getStoreConfig('bxslider/bxslider_group/adaptiveHeightSpeed',Mage::app()->getStore());
+$VIDEO = (Mage::getStoreConfig('bxslider/bxslider_group/video',Mage::app()->getStore())) ? 'true' : 'false';
+$CONTROLS = (Mage::getStoreConfig('bxslider/bxslider_group/controls',Mage::app()->getStore())) ? 'true' : 'false';
+$NEXT_TEXT = Mage::getStoreConfig('bxslider/bxslider_group/nextText',Mage::app()->getStore());
+$PREV_TEXT = Mage::getStoreConfig('bxslider/bxslider_group/prevText',Mage::app()->getStore());
+$AUTO_CONTROL = (Mage::getStoreConfig('bxslider/bxslider_group/autoControls',Mage::app()->getStore())) ? 'true' : 'false';;
+$START_TEXT = Mage::getStoreConfig('bxslider/bxslider_group/startText',Mage::app()->getStore());
+$STOP_TEXT = Mage::getStoreConfig('bxslider/bxslider_group/stopText',Mage::app()->getStore());
+$AUTO = (Mage::getStoreConfig('bxslider/bxslider_group/auto',Mage::app()->getStore())) ? 'true' : 'false';
+$PAUSE = Mage::getStoreConfig('bxslider/bxslider_group/pause',Mage::app()->getStore());
+$AUTO_START = (Mage::getStoreConfig('bxslider/bxslider_group/autoStart',Mage::app()->getStore())) ? 'true' : 'false';
+$SLIDE_WIDTH = Mage::getStoreConfig('bxslider/bxslider_group/slideWidth',Mage::app()->getStore());
+?>
+
+<?php $collection = $this->getCollection(); ?>
+
+<?php if(count($collection)): ?>
+    <?php $count = 0;foreach($collection->getData() as $data) { ?>
+        <?php $images = $this->getSortedImages($data['content']); ?>
+        <ul class="bxslider-sidebar-<?php echo $count ?>">
+            <?php foreach($images as $image) { ?>
+                <li><a href="<?php echo $image['link'] ?>"><img src="<?php echo $image['url'] ?>" title="<?php echo $image['label'] ?>" /></a></li>
+            <?php } ?>
+        </ul>
+
+        <script>
+            jQuery(function($) {
+                $('.bxslider-sidebar-<?php echo $count++ ?>').bxSlider(
+
+                    <?php if($data['advanced_settings'] != '') {
+                        echo $data['advanced_settings'];
+                    } else { ?>
+                    {
+                        mode: '<?php echo $MODE; ?>',
+                        useCSS: false,
+                        speed: '<?php echo $SPEED; ?>',
+                        infiniteLoop:   <?php echo $INFINITE_LOOP; ?>,
+                        captions:   <?php echo $CAPTION; ?>,
+                        adaptiveHeight: <?php echo $ADAPTIVE_HEIGHT ?>,
+                        <?php if($ADAPTIVE_HEIGHT) { ?>
+                        adaptiveHeightSpeed:    '<?php echo $ADAPTIVE_HEIGHT_SPEED; ?>',
+                        <?php } ?>
+                        video:  <?php echo $VIDEO; ?>,
+                        controls:   <?php echo $CONTROLS; ?>,
+                        autoControls:   <?php echo $AUTO_CONTROL; ?>,
+                        auto:   <?php echo $AUTO; ?>,
+                        pause:  '<?php echo $PAUSE; ?>',
+                        autoStart: <?php echo $AUTO_START; ?>,
+                        <?php if($SLIDE_WIDTH) { ?>
+                        slideWidth: <?php echo $SLIDE_WIDTH; ?>
+                        <?php } ?>
+                    }
+                    <?php } ?>
+                );
+            });
+        </script>
+    <?php } ?>
+
+
+<?php endif; ?>

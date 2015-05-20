@@ -1,0 +1,152 @@
+<?php
+/**
+ * @author: Pardeep Kumar <pardeep19@gmail.com>
+ * @since: 15-01-2015 18:25
+ * @copyright: All right reserved.
+ * created by IntelliJ IDEA
+ */
+?>
+
+
+<?php
+/**
+ * Template for block Mage_Adminhtml_Block_Catalog_Product_Helper_Form_Gallery_Content
+ */
+?>
+<?php
+$_block = $this;
+/* @var $_block Mage_Adminhtml_Block_Catalog_Product_Helper_Form_Gallery_Content */
+?>
+<div id="<?php echo $_block->getHtmlId() ?>" >
+    <div class="grid">
+        <table cellspacing="0" class="data border" id="<?php echo $_block->getHtmlId() ?>_grid" width="100%">
+            <col width="1" />
+            <col />
+            <col width="70" />
+
+
+            <col width="70" />
+            <col width="70" />
+            <thead>
+            <tr class="headings">
+                <th><?php echo Mage::helper('bxslider')->__('Image') ?></th>
+                <th><?php echo Mage::helper('bxslider')->__('Information') ?></th>
+                <th><?php echo Mage::helper('bxslider')->__('Sort Order') ?></th>
+
+                <th><?php echo Mage::helper('bxslider')->__('Exclude') ?></th>
+                <th class="last"><?php echo Mage::helper('bxslider')->__('Remove') ?></th>
+            </tr>
+            </thead>
+            <tbody id="<?php echo $_block->getHtmlId() ?>_list">
+            <tr id="<?php echo $_block->getHtmlId() ?>_template" class="template no-display">
+                <td class="cell-image">
+                    <div class="place-holder" onmouseover="<?php echo $_block->getJsObjectName(); ?>.loadImage('__file__')">
+                        <span><?php echo Mage::helper('bxslider')->__('Roll Over for preview') ?></span>
+                    </div>
+                    <img src="<?php echo $this->getSkinUrl('images/spacer.gif')?>" width="100" style="display:none;" alt="" /></td>
+                <td class="cell-label">
+                    <table>
+                        <tr>
+                            <td>
+                                <span><?php echo $this->__('Caption');?></span>
+                                <input id="image-label" type="text" <?php if($_block->getElement()->getReadonly()):?> disabled="disabled"<?php endif;?> class="input-text" onkeyup="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" onchange="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span><?php echo $this->__('Link');?></span>
+                                <input id="image-link" type="text" <?php if($_block->getElement()->getReadonly()):?> disabled="disabled"<?php endif;?> class="input-text" onkeyup="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" onchange="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="cell-position"><input type="text" <?php if($_block->getElement()->getReadonly()):?> disabled="disabled"<?php endif;?> class="input-text validate-number" onkeyup="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" onchange="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+
+                <td class="cell-disable a-center"><input type="checkbox" <?php if($_block->getElement()->getReadonly()):?> disabled="disabled"<?php endif;?> onclick="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+                <td class="cell-remove a-center last"><input type="checkbox" <?php if($_block->getElement()->getReadonly()):?> disabled="disabled"<?php endif;?> onclick="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+            </tr>
+
+            <tr id="<?php echo $_block->getHtmlId() ?>-image-0">
+                <td class="cell-image"><?php echo Mage::helper('bxslider')->__('No image') ?></td>
+                <td class="cell-label"><input type="hidden" />&nbsp;</td>
+                <td class="cell-position"><input type="hidden" />&nbsp;</td>
+                <td class="cell-disable"><input type="hidden" />&nbsp;</td>
+                <td class="cell-remove last"><input type="hidden" />&nbsp;</td>
+            </tr>
+            </tbody>
+            <?php if (!$_block->getElement()->getReadonly()):?>
+                <tfoot>
+                <tr>
+                    <td colspan="100" class="last" style="padding:8px">
+                        <?php echo $_block->getUploaderHtml() ?>
+                    </td>
+                </tr>
+                </tfoot>
+            <?php endif;?>
+        </table>
+    </div>
+</div>
+
+<input type="hidden" id="<?php echo $_block->getHtmlId() ?>_save" name="<?php echo $_block->getElement()->getName() ?>[images]" value="<?php echo $_block->htmlEscape($_block->getImagesJson()) ?>" />
+<input type="hidden" id="<?php echo $_block->getHtmlId() ?>_save_image" name="<?php echo $_block->getElement()->getName() ?>[values]" value="<?php echo $_block->htmlEscape($_block->getImagesValuesJson()) ?>" />
+<script type="text/javascript">
+    //<![CDATA[
+
+    var <?php echo $_block->getJsObjectName(); ?> = new Product.Gallery('<?php echo $_block->getHtmlId() ?>',
+        <?php if ($_block->getElement()->getReadonly()):?>null<?php else:?><?php echo $_block->getUploader()->getJsObjectName() ?><?php endif;?>,
+        <?php echo $_block->getImageTypesJson() ?>);
+    //]]>
+
+
+        /* to update section after image upload */
+        Product.Gallery.prototype.updateImage = function(file) {
+
+        var index = this.getIndexByFile(file);
+        this.images[index].link = this.getFileElement(file, 'cell-label #image-link').value;
+        this.images[index].label = this.getFileElement(file, 'cell-label #image-label').value;
+
+        this.images[index].position = this.getFileElement(file,'cell-position input').value;
+        this.images[index].removed = (this.getFileElement(file,'cell-remove input').checked ? 1 : 0);
+        this.images[index].disabled = (this.getFileElement(file,'cell-disable input').checked ? 1 : 0);
+        this.getElement('save').value = Object.toJSON(this.images);
+        this.updateState(file);
+        this.container.setHasChanges();
+    }
+
+    /* fill saved data in db to form */
+    Product.Gallery.prototype.updateVisualisation = function(file) {
+
+        var image = this.getImageByFile(file);
+
+        if(image.link != undefined){
+            this.getFileElement(file, 'cell-label #image-link').value = image.link;
+        }
+        this.getFileElement(file, 'cell-label #image-label').value = image.label;
+
+        this.getFileElement(file, 'cell-position input').value = image.position;
+        this.getFileElement(file, 'cell-remove input').checked = (image.removed == 1);
+        this.getFileElement(file, 'cell-disable input').checked = (image.disabled == 1);
+        $H(this.imageTypes)
+            .each(
+            function(pair) {
+                if (this.imagesValues[pair.key] == file) {
+                    this.getFileElement(file,
+                        'cell-' + pair.key + ' input').checked = true;
+                }
+            }.bind(this));
+        this.updateState(file);
+    }
+
+</script>
+
+<style>
+
+    .cell-label span {
+        float: left;
+        width: 14% !important;
+    }
+    .grid td input.input-text {
+        float: left;
+        width: 84%;
+    }
+</style>

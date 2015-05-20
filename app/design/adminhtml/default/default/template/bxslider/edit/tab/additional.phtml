@@ -1,0 +1,35 @@
+<?php
+/**
+ * @author: Pardeep Kumar <pardeep19@gmail.com>
+ * @since: 29-01-2015 15:45
+ * @copyright: All right reserved.
+ * created by IntelliJ IDEA
+ */
+?>
+
+<?php $id = $this->getRequest()->getParam('id'); ?>
+
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('External Code'); ?></h4>
+    </div>
+    <div id="bxslider_form" class="fieldset ">
+        <div class="hor-scroll">
+            <table class="form-list" cellspacing="0">
+                <tr>
+                    <td><strong><?php echo $this->__('To apply on xml/phtml pages'); ?></strong></td>
+                </tr>
+                <tr>
+                    <td>
+                        <?php echo $this->__('&lt;block type="bxslider/bxslider" name="bxslider_external" template="bxslider/bxslider.phtml" &gt;
+                                <br/>
+                            &lt;action method="setData"&gt;&lt;name&gt;slider_id&lt;/name&gt;&lt;value&gt;%s&lt;/value&gt;&lt;/action&gt;
+                                <br/>
+                            &lt;/block&gt;
+                        ',$id); ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
