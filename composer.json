@@ -1,0 +1,12 @@
+{
+    "name": "orangemantra/responsive-bx-slider",
+    "type": "magento-module",
+    "description": "A responsive slider based on Bx slider and jquery.",
+    "authors": [
+	{
+            "name": "Pardeep Kumar",
+            "email": "contact@orangemantra.com"
+        }
+    ],
+    "require": {}
+}
